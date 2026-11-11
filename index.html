@@ -1,336 +1,142 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TechStore | Tienda de Tecnología</title>
-
-    <!-- CONEXION CSS -->
+    <title>TechStore | Tecnología y Gaming</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
 
-    <!-- NAVBAR -->
-    <header>
+    <header class="header">
         <nav class="navbar">
-
-            <a href="#inicio" class="logo">
-                TECH<span>STORE</span>
-            </a>
+            <a href="#" class="logo">TECH<span>STORE</span></a>
 
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#ofertas">Ofertas</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#catalogo">Productos</a></li>
+                <li><a href="#categorias">Categorías</a></li>
+                <li><a href="#carrito">Carrito <span id="contador-carrito">0</span></a></li>
             </ul>
-
-            <button class="cart-button" onclick="mostrarCarrito()">
-                🛒 Carrito
-                <span id="contador">0</span>
-            </button>
-
         </nav>
     </header>
 
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <span class="hero-tag">TECNOLOGÍA A TU ALCANCE</span>
+                <h1>Potenciá tu mundo <span>digital</span></h1>
+                <p>Encontrá los mejores componentes, periféricos y accesorios para llevar tu experiencia al siguiente nivel.</p>
+                <a href="#catalogo" class="btn-primary">Explorar productos</a>
+            </div>
+        </section>
 
-    <!-- HERO -->
-    <section class="hero" id="inicio">
-
-        <div class="hero-content">
-
-            <p class="subtitle">TECNOLOGÍA A TU ALCANCE</p>
-
-            <h1>
-                Potenciá tu mundo
-                <span>digital</span>
-            </h1>
-
-            <p>
-                Encontrá los mejores componentes y accesorios
-                para tu computadora.
-            </p>
-
-            <a href="#productos" class="hero-button">
-                Ver productos
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- OFERTAS -->
-    <section class="offers" id="ofertas">
-
-        <h2>🔥 Ofertas destacadas</h2>
-
-        <p>
-            Equipá tu computadora al mejor precio.
-        </p>
-
-    </section>
-
-
-    <!-- PRODUCTOS -->
-    <main class="products-section" id="productos">
-
-        <div class="section-header">
-
-            <div>
-                <h2>Nuestros productos</h2>
-
-                <p>
-                    Elegí lo que necesitás para tu setup.
-                </p>
+        <section class="categories-section" id="categorias">
+            <div class="section-heading">
+                <span class="section-tag">EXPLORÁ LA TIENDA</span>
+                <h2>Comprá por categoría</h2>
+                <p>Encontrá rápidamente lo que estás buscando.</p>
             </div>
 
-            <input
-                type="text"
-                id="buscador"
-                placeholder="Buscar productos..."
-            >
+            <div class="category-cards">
+                <button class="category-card" data-category="componentes">
+                    <span class="category-icon">🖥️</span>
+                    <span>Componentes</span>
+                </button>
 
-        </div>
+                <button class="category-card" data-category="perifericos">
+                    <span class="category-icon">⌨️</span>
+                    <span>Periféricos</span>
+                </button>
 
+                <button class="category-card" data-category="monitores">
+                    <span class="category-icon">🖥️</span>
+                    <span>Monitores</span>
+                </button>
 
-        <!-- FILTROS -->
-        <div class="filters">
+                <button class="category-card" data-category="pcs">
+                    <span class="category-icon">💻</span>
+                    <span>PCs y notebooks</span>
+                </button>
+            </div>
+        </section>
 
-            <button class="filter-btn active" data-filtro="todos">
-                Todos
-            </button>
+        <section class="catalog-section" id="catalogo">
+            <div class="section-heading">
+                <span class="section-tag">NUESTRO CATÁLOGO</span>
+                <h2>Explorá nuestros productos</h2>
+                <p>Encontrá el equipo ideal para vos.</p>
+            </div>
 
-            <button class="filter-btn" data-filtro="componentes">
-                Componentes
-            </button>
-
-            <button class="filter-btn" data-filtro="perifericos">
-                Periféricos
-            </button>
-
-            <button class="filter-btn" data-filtro="accesorios">
-                Accesorios
-            </button>
-
-        </div>
-
-
-        <!-- GRID PRODUCTOS -->
-        <div class="products-grid" id="lista-productos">
-
-
-            <!-- PRODUCTO 1 -->
-            <article class="product-card" data-categoria="componentes">
-
-                <img
-                    src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500"
-                    alt="Placa de video"
+            <div class="catalog-controls">
+                <input
+                    type="search"
+                    id="buscador"
+                    placeholder="Buscar productos..."
+                    aria-label="Buscar productos"
                 >
 
-                <div class="product-info">
+                <select id="ordenar-productos" aria-label="Ordenar productos">
+                    <option value="default">Ordenar por</option>
+                    <option value="menor">Menor precio</option>
+                    <option value="mayor">Mayor precio</option>
+                    <option value="nombre">Nombre A-Z</option>
+                </select>
+            </div>
 
-                    <span class="category">Componentes</span>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="todos">Todos</button>
+                <button class="filter-btn" data-category="componentes">Componentes</button>
+                <button class="filter-btn" data-category="perifericos">Periféricos</button>
+                <button class="filter-btn" data-category="monitores">Monitores</button>
+                <button class="filter-btn" data-category="pcs">PCs y notebooks</button>
+            </div>
 
-                    <h3>Placa de video RTX</h3>
+            <p class="results-count" id="cantidad-resultados"></p>
 
-                    <p class="price">$450.000</p>
+            <div class="products-grid" id="contenedor-productos">
+                <!-- JavaScript genera las tarjetas automáticamente -->
+            </div>
 
-                    <button onclick="agregarCarrito('Placa de video RTX', 450000)">
-                        Agregar al carrito
-                    </button>
+            <p class="no-results" id="sin-resultados" hidden>
+                No encontramos productos con esa búsqueda.
+            </p>
+        </section>
 
+        <section class="cart-section" id="carrito">
+            <div class="section-heading">
+                <span class="section-tag">TU COMPRA</span>
+                <h2>Carrito de compras</h2>
+                <p>Revisá los productos que seleccionaste.</p>
+            </div>
+
+            <div class="cart-container">
+                <div id="lista-carrito">
+                    <p class="cart-empty">Todavía no agregaste productos.</p>
                 </div>
 
-            </article>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <strong id="total-carrito">$0</strong>
+                    </div>
 
-
-            <!-- PRODUCTO 2 -->
-            <article class="product-card" data-categoria="perifericos">
-
-                <img
-                    src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500"
-                    alt="Teclado mecánico"
-                >
-
-                <div class="product-info">
-
-                    <span class="category">Periféricos</span>
-
-                    <h3>Teclado mecánico RGB</h3>
-
-                    <p class="price">$85.000</p>
-
-                    <button onclick="agregarCarrito('Teclado mecánico RGB', 85000)">
-                        Agregar al carrito
+                    <button id="vaciar-carrito" class="btn-secondary">
+                        Vaciar carrito
                     </button>
-
                 </div>
-
-            </article>
-
-
-            <!-- PRODUCTO 3 -->
-            <article class="product-card" data-categoria="perifericos">
-
-                <img
-                    src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=500"
-                    alt="Mouse gamer"
-                >
-
-                <div class="product-info">
-
-                    <span class="category">Periféricos</span>
-
-                    <h3>Mouse Gamer RGB</h3>
-
-                    <p class="price">$35.000</p>
-
-                    <button onclick="agregarCarrito('Mouse Gamer RGB', 35000)">
-                        Agregar al carrito
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- PRODUCTO 4 -->
-            <article class="product-card" data-categoria="componentes">
-
-                <img
-                    src="https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?w=500"
-                    alt="Memoria RAM"
-                >
-
-                <div class="product-info">
-
-                    <span class="category">Componentes</span>
-
-                    <h3>Memoria RAM 16GB</h3>
-
-                    <p class="price">$75.000</p>
-
-                    <button onclick="agregarCarrito('Memoria RAM 16GB', 75000)">
-                        Agregar al carrito
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- PRODUCTO 5 -->
-            <article class="product-card" data-categoria="accesorios">
-
-                <img
-                    src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500"
-                    alt="Monitor"
-                >
-
-                <div class="product-info">
-
-                    <span class="category">Accesorios</span>
-
-                    <h3>Monitor Full HD</h3>
-
-                    <p class="price">$220.000</p>
-
-                    <button onclick="agregarCarrito('Monitor Full HD', 220000)">
-                        Agregar al carrito
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- PRODUCTO 6 -->
-            <article class="product-card" data-categoria="accesorios">
-
-                <img
-                    src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500"
-                    alt="Auriculares"
-                >
-
-                <div class="product-info">
-
-                    <span class="category">Accesorios</span>
-
-                    <h3>Auriculares Gamer</h3>
-
-                    <p class="price">$65.000</p>
-
-                    <button onclick="agregarCarrito('Auriculares Gamer', 65000)">
-                        Agregar al carrito
-                    </button>
-
-                </div>
-
-            </article>
-
-        </div>
-
-        <p id="sin-resultados" hidden>
-            No se encontraron productos.
-        </p>
-
+            </div>
+        </section>
     </main>
 
-
-    <!-- CARRITO -->
-    <section class="cart-section" id="carrito">
-
-        <h2>🛒 Tu carrito de compras</h2>
-
-        <div id="productos-carrito">
-
-            <p>Tu carrito está vacío.</p>
-
-        </div>
-
-        <div class="cart-total">
-
-            <h3>
-                Total:
-                $<span id="total">0</span>
-            </h3>
-
-            <button
-                class="clear-button"
-                onclick="vaciarCarrito()"
-            >
-                Vaciar carrito
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer id="contacto">
-
-        <h2>TECH<span>STORE</span></h2>
-
-        <p>
-            Tu tienda de tecnología y componentes.
-        </p>
-
-        <p>
-            © 2026 TechStore - Todos los derechos reservados.
-        </p>
-
+    <footer class="footer">
+        <a href="#inicio" class="logo">TECH<span>STORE</span></a>
+        <p>Tu próximo nivel tecnológico empieza acá.</p>
+        <p class="copyright">© 2026 TechStore. Proyecto educativo.</p>
     </footer>
 
-
-    <!-- CONEXION JAVASCRIPT -->
     <script src="./js/main.js"></script>
-
 </body>
-
 </html>
+
