@@ -1,5 +1,7 @@
 
-/* CONFIGURACIÓN GENERAL */
+/* =================================
+   CONFIGURACION GENERAL
+================================= */
 
 * {
     margin: 0;
@@ -14,7 +16,10 @@ body {
     color: white;
 }
 
-/* NAVBAR */
+
+/* =================================
+   NAVBAR
+================================= */
 
 header {
     background-color: #191923;
@@ -28,6 +33,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .logo {
@@ -72,15 +78,20 @@ footer span {
     background: white;
     padding: 3px 7px;
     border-radius: 50%;
+    margin-left: 5px;
 }
 
-/* PORTADA */
+
+/* =================================
+   HERO
+================================= */
 
 .hero {
     min-height: 420px;
     display: flex;
     align-items: center;
     padding: 60px 10%;
+
     background:
         linear-gradient(90deg, #101018 30%, #101018aa),
         url("https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1600")
@@ -92,7 +103,7 @@ footer span {
 }
 
 .subtitle {
-    color: #008cff;
+    color: #00d4ff;
     font-weight: bold;
     margin-bottom: 15px;
 }
@@ -128,7 +139,10 @@ footer span {
     transform: translateY(-3px);
 }
 
-/* OFERTAS */
+
+/* =================================
+   OFERTAS
+================================= */
 
 .offers {
     text-align: center;
@@ -144,7 +158,10 @@ footer span {
     color: #aaa;
 }
 
-/* PRODUCTOS */
+
+/* =================================
+   PRODUCTOS
+================================= */
 
 .products-section {
     padding: 60px 8%;
@@ -174,13 +191,17 @@ footer span {
     background: #191923;
     color: white;
     outline: none;
+    min-width: 230px;
 }
 
 #buscador:focus {
     border-color: #00d4ff;
 }
 
-/* FILTROS */
+
+/* =================================
+   FILTROS
+================================= */
 
 .filters {
     display: flex;
@@ -206,11 +227,14 @@ footer span {
     border-color: #00d4ff;
 }
 
-/* TARJETAS */
+
+/* =================================
+   GRID Y TARJETAS
+================================= */
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
 }
 
@@ -267,7 +291,10 @@ footer span {
     background: white;
 }
 
-/* CARRITO */
+
+/* =================================
+   CARRITO
+================================= */
 
 .cart-section {
     background: #191923;
@@ -278,7 +305,7 @@ footer span {
     margin-bottom: 25px;
 }
 
-#productos-carrito p {
+#productos-carrito > p {
     color: #aaa;
     margin-bottom: 15px;
 }
@@ -287,22 +314,45 @@ footer span {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
-    padding: 15px 0;
-    border-bottom: 1px solid #333;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background: #101018;
+    border-radius: 10px;
 }
 
-.cart-item button {
+.cart-item p {
+    color: #aaa;
+    margin-top: 8px;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.cart-actions button {
+    padding: 9px 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #00d4ff;
+    color: #101018;
+    font-weight: bold;
+}
+
+.cart-actions .delete-button {
     background: #e74c3c;
     color: white;
-    border: none;
-    padding: 7px 12px;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-.cart-section h3 {
+.cart-total {
     margin-top: 25px;
+}
+
+.cart-total h3 {
+    font-size: 24px;
 }
 
 .clear-button {
@@ -315,7 +365,20 @@ footer span {
     margin-top: 20px;
 }
 
-/* FOOTER */
+
+/* =================================
+   SIN RESULTADOS
+================================= */
+
+#sin-resultados {
+    color: #aaa;
+    margin-top: 25px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
 
 footer {
     padding: 40px 20px;
@@ -332,19 +395,25 @@ footer p {
     margin: 10px 0;
 }
 
-/* RESPONSIVE */
+
+/* =================================
+   RESPONSIVE
+================================= */
 
 @media (max-width: 900px) {
+
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .nav-links {
         gap: 15px;
     }
+
 }
 
 @media (max-width: 600px) {
+
     .navbar {
         flex-direction: column;
         gap: 20px;
@@ -371,4 +440,10 @@ footer p {
     #buscador {
         width: 100%;
     }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
 }

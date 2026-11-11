@@ -1,156 +1,307 @@
 
-// ARRAY DEL CARRITO
+// =====================================
+// 1. ARRAY DEL CARRITO
+// =====================================
 
 let carrito = [];
 
+let categoriaActual = "todos";
 
-// AGREGAR PRODUCTOS
+
+// =====================================
+// 2. AGREGAR PRODUCTOS
+// =====================================
 
 function agregarCarrito(nombre, precio) {
 
-    const producto = {
-        nombre: nombre,
-        precio: precio
-    };
+    const productoExistente = carrito.find(
+        producto => producto.nombre === nombre
+    );
 
-    carrito.push(producto);
+    if (productoExistente) {
+
+        productoExistente.cantidad++;
+
+    } else {
+
+        const nuevoProducto = {
+            nombre: nombre,
+            precio: precio,
+            cantidad: 1
+        };
+
+        carrito.push(nuevoProducto);
+
+    }
 
     actualizarCarrito();
 
-    alert(nombre + " agregado al carrito.");
 }
 
 
-// ACTUALIZAR CARRITO
+// =====================================
+// 3. ACTUALIZAR CARRITO
+// =====================================
 
 function actualizarCarrito() {
 
     const contenedor = document.getElementById("productos-carrito");
+
     const contador = document.getElementById("contador");
+
     const totalElemento = document.getElementById("total");
 
     contenedor.innerHTML = "";
 
     let total = 0;
 
+    let cantidadTotal = 0;
+
+
     carrito.forEach((producto, index) => {
 
-        total += producto.precio;
+        const subtotal = producto.precio * producto.cantidad;
+
+        total += subtotal;
+
+        cantidadTotal += producto.cantidad;
+
 
         contenedor.innerHTML += `
+
             <div class="cart-item">
 
-                <span>${producto.nombre}</span>
+                <div>
 
-                <span>$${producto.precio.toLocaleString("es-AR")}</span>
+                    <strong>${producto.nombre}</strong>
 
-                <button onclick="eliminarProducto(${index})">
-                    Eliminar
-                </button>
+                    <p>
+                        Precio unitario:
+                        $${producto.precio.toLocaleString("es-AR")}
+                    </p>
+
+                    <p>
+                        Cantidad: ${producto.cantidad}
+                    </p>
+
+                    <p>
+                        Subtotal:
+                        $${subtotal.toLocaleString("es-AR")}
+                    </p>
+
+                </div>
+
+
+                <div class="cart-actions">
+
+                    <button onclick="cambiarCantidad(${index}, -1)">
+                        -
+                    </button>
+
+                    <button onclick="cambiarCantidad(${index}, 1)">
+                        +
+                    </button>
+
+                    <button
+                        class="delete-button"
+                        onclick="eliminarProducto(${index})"
+                    >
+                        Eliminar
+                    </button>
+
+                </div>
 
             </div>
+
         `;
+
     });
 
+
     if (carrito.length === 0) {
+
         contenedor.innerHTML = "<p>Tu carrito está vacío.</p>";
+
     }
 
-    contador.textContent = carrito.length;
+
+    contador.textContent = cantidadTotal;
 
     totalElemento.textContent = total.toLocaleString("es-AR");
+
 }
 
 
-// ELIMINAR PRODUCTOS
+// =====================================
+// 4. CAMBIAR CANTIDADES
+// =====================================
+
+function cambiarCantidad(index, cantidad) {
+
+    carrito[index].cantidad += cantidad;
+
+
+    if (carrito[index].cantidad <= 0) {
+
+        carrito.splice(index, 1);
+
+    }
+
+
+    actualizarCarrito();
+
+}
+
+
+// =====================================
+// 5. ELIMINAR PRODUCTO
+// =====================================
 
 function eliminarProducto(index) {
 
     carrito.splice(index, 1);
 
     actualizarCarrito();
+
 }
 
 
-// VACIAR CARRITO
+// =====================================
+// 6. VACIAR CARRITO
+// =====================================
 
 function vaciarCarrito() {
 
     carrito = [];
 
     actualizarCarrito();
+
 }
 
 
-// MOSTRAR CARRITO
+// =====================================
+// 7. MOSTRAR CARRITO
+// =====================================
 
 function mostrarCarrito() {
 
     document.getElementById("carrito").scrollIntoView({
         behavior: "smooth"
     });
+
 }
 
 
-// FILTRAR PRODUCTOS
-
-function filtrarProductos(categoria, boton) {
-
-    const productos = document.querySelectorAll(".product-card");
-
-    productos.forEach(producto => {
-
-        if (
-            categoria === "todos" ||
-            producto.dataset.categoria === categoria
-        ) {
-            producto.style.display = "block";
-        } else {
-            producto.style.display = "none";
-        }
-
-    });
-
-    // CAMBIAR BOTÓN ACTIVO
-
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.classList.remove("active");
-    });
-
-    boton.classList.add("active");
-
-    // LIMPIAR BUSCADOR
-
-    document.getElementById("buscador").value = "";
-}
-
-
-// BUSCAR PRODUCTOS
+// =====================================
+// 8. BUSCAR PRODUCTOS
+// =====================================
 
 function buscarProductos() {
 
-    const buscador = document.getElementById("buscador");
-
-    const texto = buscador.value.toLowerCase();
+    const texto = document
+        .getElementById("buscador")
+        .value
+        .toLowerCase()
+        .trim();
 
     const productos = document.querySelectorAll(".product-card");
 
+    let encontrados = 0;
+
+
     productos.forEach(producto => {
 
-        const nombre = producto.querySelector("h3").textContent.toLowerCase();
+        const nombre = producto
+            .querySelector("h3")
+            .textContent
+            .toLowerCase();
 
-        if (nombre.includes(texto)) {
+        const categoria = producto.dataset.categoria;
+
+        const coincideTexto = nombre.includes(texto);
+
+        const coincideCategoria =
+            categoriaActual === "todos" ||
+            categoria === categoriaActual;
+
+
+        if (coincideTexto && coincideCategoria) {
+
             producto.style.display = "block";
+
+            encontrados++;
+
         } else {
+
             producto.style.display = "none";
+
         }
 
     });
 
-    // QUITAR FILTRO ACTIVO
 
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.classList.remove("active");
-    });
+    document.getElementById("sin-resultados").hidden =
+        encontrados > 0;
 
 }
+
+
+// =====================================
+// 9. FILTRAR PRODUCTOS
+// =====================================
+
+function filtrarProductos(categoria, boton) {
+
+    categoriaActual = categoria;
+
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    boton.classList.add("active");
+
+
+    buscarProductos();
+
+}
+
+
+// =====================================
+// 10. EVENTOS AL CARGAR LA PÁGINA
+// =====================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Evento del buscador
+
+    document.getElementById("buscador").addEventListener(
+        "input",
+        buscarProductos
+    );
+
+
+    // Eventos de los filtros
+
+    document.querySelectorAll(".filter-btn").forEach(boton => {
+
+        boton.addEventListener("click", () => {
+
+            filtrarProductos(
+                boton.dataset.filtro,
+                boton
+            );
+
+        });
+
+    });
+
+
+    // Inicializar carrito
+
+    actualizarCarrito();
+
+});
