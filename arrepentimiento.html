@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón de arrepentimiento | TechStore</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">TECH<span>STORE</span></a>
+
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#productos">Productos</a>
+            <a href="carrito.html" class="nav-carrito">
+                Mi carrito <span id="contador-carrito">0</span>
+            </a>
+            <a href="arrepentimiento.html" class="activo">Arrepentimiento</a>
+        </nav>
+    </header>
+
+    <main class="pagina-interior">
+        <section class="arrepentimiento-pagina">
+            <span class="icono-arrepentimiento">↩</span>
+
+            <span class="etiqueta">ATENCIÓN AL CLIENTE</span>
+            <h1>Botón de arrepentimiento</h1>
+
+            <p>
+                Si realizaste una compra en TechStore y decidiste
+                arrepentirte, podés iniciar tu solicitud desde este formulario.
+            </p>
+
+            <form id="form-arrepentimiento" class="formulario-arrepentimiento">
+
+                <div class="form-grupo">
+                    <label for="numero-pedido">Número de pedido</label>
+                    <input
+                        type="text"
+                        id="numero-pedido"
+                        placeholder="Ejemplo: TS-12345"
+                        required
+                    >
+                </div>
+
+                <div class="form-grupo">
+                    <label for="email-arrepentimiento">Correo electrónico de la compra</label>
+                    <input
+                        type="email"
+                        id="email-arrepentimiento"
+                        placeholder="tuemail@ejemplo.com"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-arrepentimiento btn-ancho">
+                    Solicitar arrepentimiento
+                </button>
+
+                <p id="mensaje-arrepentimiento" class="mensaje-formulario"></p>
+            </form>
+
+            <div class="informacion-arrepentimiento">
+                <h3>¿Qué sucede después?</h3>
+                <p>
+                    En esta versión de demostración, la solicitud se registra
+                    localmente en el navegador. En una tienda real, el pedido
+                    debe quedar registrado y la solicitud debe ser gestionada
+                    por el comercio.
+                </p>
+            </div>
+
+            <a href="index.html" class="seguir-comprando">
+                ← Volver al inicio
+            </a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="index.html" class="logo">TECH<span>STORE</span></a>
+        <p class="copyright">© 2026 TechStore. Proyecto educativo.</p>
+    </footer>
+
+    <script src="./js/productos.js"></script>
+    <script src="./js/arrepentimiento.js"></script>
+</body>
+</html>

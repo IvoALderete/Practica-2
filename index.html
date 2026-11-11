@@ -4,72 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore | Tecnología y Gaming</title>
+    <title>TechStore | Tecnología</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-    <header class="header">
-        <nav class="navbar">
-            <a href="#" class="logo">TECH<span>STORE</span></a>
+    <header class="navbar">
+        <a href="index.html" class="logo">TECH<span>STORE</span></a>
 
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#catalogo">Productos</a></li>
-                <li><a href="#categorias">Categorías</a></li>
-                <li><a href="#carrito">Carrito <span id="contador-carrito">0</span></a></li>
-            </ul>
+        <nav class="nav-links">
+            <a href="index.html" class="activo">Inicio</a>
+            <a href="#productos">Productos</a>
+            <a href="#categorias">Categorías</a>
+            <a href="carrito.html" class="nav-carrito">
+                Mi carrito <span id="contador-carrito">0</span>
+            </a>
+            <a href="arrepentimiento.html">Arrepentimiento</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero" id="inicio">
-            <div class="hero-content">
-                <span class="hero-tag">TECNOLOGÍA A TU ALCANCE</span>
-                <h1>Potenciá tu mundo <span>digital</span></h1>
-                <p>Encontrá los mejores componentes, periféricos y accesorios para llevar tu experiencia al siguiente nivel.</p>
-                <a href="#catalogo" class="btn-primary">Explorar productos</a>
+        <section class="hero">
+            <div class="hero-contenido">
+                <span class="etiqueta">TECNOLOGÍA A TU ALCANCE</span>
+                <h1>Potenciá tu mundo<br>con <span>TechStore</span></h1>
+                <p>Encontrá los mejores componentes, periféricos y equipos tecnológicos.</p>
+                <a href="#productos" class="btn-principal">Explorar productos</a>
             </div>
         </section>
 
-        <section class="categories-section" id="categorias">
-            <div class="section-heading">
-                <span class="section-tag">EXPLORÁ LA TIENDA</span>
+        <section class="seccion" id="categorias">
+            <div class="titulo-seccion">
+                <span class="etiqueta">EXPLORÁ LA TIENDA</span>
                 <h2>Comprá por categoría</h2>
                 <p>Encontrá rápidamente lo que estás buscando.</p>
             </div>
 
-            <div class="category-cards">
-                <button class="category-card" data-category="componentes">
-                    <span class="category-icon">🖥️</span>
-                    <span>Componentes</span>
+            <div class="categorias-grid">
+                <button class="categoria-card" data-category="componentes">
+                    <span>🖥️</span>
+                    <h3>Componentes</h3>
+                    <p>Procesadores, placas y más</p>
                 </button>
 
-                <button class="category-card" data-category="perifericos">
-                    <span class="category-icon">⌨️</span>
-                    <span>Periféricos</span>
+                <button class="categoria-card" data-category="perifericos">
+                    <span>⌨️</span>
+                    <h3>Periféricos</h3>
+                    <p>Teclados, mouse y audio</p>
                 </button>
 
-                <button class="category-card" data-category="monitores">
-                    <span class="category-icon">🖥️</span>
-                    <span>Monitores</span>
+                <button class="categoria-card" data-category="monitores">
+                    <span>🖥️</span>
+                    <h3>Monitores</h3>
+                    <p>Imagen y rendimiento</p>
                 </button>
 
-                <button class="category-card" data-category="pcs">
-                    <span class="category-icon">💻</span>
-                    <span>PCs y notebooks</span>
+                <button class="categoria-card" data-category="pcs">
+                    <span>💻</span>
+                    <h3>PCs y Notebooks</h3>
+                    <p>Equipos para cada necesidad</p>
                 </button>
             </div>
         </section>
 
-        <section class="catalog-section" id="catalogo">
-            <div class="section-heading">
-                <span class="section-tag">NUESTRO CATÁLOGO</span>
+        <section class="seccion productos-seccion" id="productos">
+            <div class="titulo-seccion">
+                <span class="etiqueta">NUESTRO CATÁLOGO</span>
                 <h2>Explorá nuestros productos</h2>
-                <p>Encontrá el equipo ideal para vos.</p>
+                <p>Elegí los productos que necesitás y agregalos a tu carrito.</p>
             </div>
 
-            <div class="catalog-controls">
+            <div class="controles-productos">
                 <input
                     type="search"
                     id="buscador"
@@ -77,7 +82,7 @@
                     aria-label="Buscar productos"
                 >
 
-                <select id="ordenar-productos" aria-label="Ordenar productos">
+                <select id="ordenar-productos">
                     <option value="default">Ordenar por</option>
                     <option value="menor">Menor precio</option>
                     <option value="mayor">Mayor precio</option>
@@ -85,58 +90,37 @@
                 </select>
             </div>
 
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-category="todos">Todos</button>
-                <button class="filter-btn" data-category="componentes">Componentes</button>
-                <button class="filter-btn" data-category="perifericos">Periféricos</button>
-                <button class="filter-btn" data-category="monitores">Monitores</button>
-                <button class="filter-btn" data-category="pcs">PCs y notebooks</button>
+            <div class="filtros">
+                <button class="filtro activo" data-category="todos">Todos</button>
+                <button class="filtro" data-category="componentes">Componentes</button>
+                <button class="filtro" data-category="perifericos">Periféricos</button>
+                <button class="filtro" data-category="monitores">Monitores</button>
+                <button class="filtro" data-category="pcs">PCs y Notebooks</button>
             </div>
 
-            <p class="results-count" id="cantidad-resultados"></p>
+            <p class="resultados" id="cantidad-resultados"></p>
 
-            <div class="products-grid" id="contenedor-productos">
-                <!-- JavaScript genera las tarjetas automáticamente -->
-            </div>
+            <div class="productos-grid" id="contenedor-productos"></div>
 
-            <p class="no-results" id="sin-resultados" hidden>
+            <p class="sin-resultados oculto" id="sin-resultados">
                 No encontramos productos con esa búsqueda.
             </p>
-        </section>
-
-        <section class="cart-section" id="carrito">
-            <div class="section-heading">
-                <span class="section-tag">TU COMPRA</span>
-                <h2>Carrito de compras</h2>
-                <p>Revisá los productos que seleccionaste.</p>
-            </div>
-
-            <div class="cart-container">
-                <div id="lista-carrito">
-                    <p class="cart-empty">Todavía no agregaste productos.</p>
-                </div>
-
-                <div class="cart-summary">
-                    <div class="cart-total">
-                        <span>Total:</span>
-                        <strong id="total-carrito">$0</strong>
-                    </div>
-
-                    <button id="vaciar-carrito" class="btn-secondary">
-                        Vaciar carrito
-                    </button>
-                </div>
-            </div>
         </section>
     </main>
 
     <footer class="footer">
-        <a href="#inicio" class="logo">TECH<span>STORE</span></a>
-        <p>Tu próximo nivel tecnológico empieza acá.</p>
+        <a href="index.html" class="logo">TECH<span>STORE</span></a>
+        <p>Tu próximo nivel tecnológico comienza acá.</p>
+        <div class="footer-links">
+            <a href="carrito.html">Mi carrito</a>
+            <a href="arrepentimiento.html">Botón de arrepentimiento</a>
+        </div>
         <p class="copyright">© 2026 TechStore. Proyecto educativo.</p>
     </footer>
 
+    <script src="./js/productos.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
+
 

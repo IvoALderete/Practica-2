@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi carrito | TechStore</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">TECH<span>STORE</span></a>
+
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#productos">Productos</a>
+            <a href="carrito.html" class="nav-carrito activo">
+                Mi carrito <span id="contador-carrito">0</span>
+            </a>
+            <a href="arrepentimiento.html">Arrepentimiento</a>
+        </nav>
+    </header>
+
+    <main class="pagina-interior">
+        <section class="titulo-pagina">
+            <span class="etiqueta">TUS SELECCIONES</span>
+            <h1>Mi carrito</h1>
+            <p>Revisá tus productos antes de continuar.</p>
+        </section>
+
+        <section class="carrito-layout">
+            <div class="carrito-lista" id="lista-carrito">
+                <!-- Los productos se cargan desde JavaScript -->
+            </div>
+
+            <aside class="resumen-compra">
+                <h2>Resumen de compra</h2>
+
+                <div class="resumen-linea">
+                    <span>Productos</span>
+                    <span id="cantidad-resumen">0</span>
+                </div>
+
+                <div class="resumen-linea">
+                    <span>Envío</span>
+                    <span>A calcular</span>
+                </div>
+
+                <div class="resumen-total">
+                    <span>Total</span>
+                    <strong id="total-carrito">$0</strong>
+                </div>
+
+                <button id="btn-finalizar-compra" class="btn-principal btn-ancho">
+                    Continuar con la compra
+                </button>
+
+                <button id="btn-vaciar-carrito" class="btn-texto">
+                    Vaciar carrito
+                </button>
+
+                <a href="index.html#productos" class="seguir-comprando">
+                    ← Seguir comprando
+                </a>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="index.html" class="logo">TECH<span>STORE</span></a>
+        <p>Tu próximo nivel tecnológico comienza acá.</p>
+        <p class="copyright">© 2026 TechStore. Proyecto educativo.</p>
+    </footer>
+
+    <script src="./js/productos.js"></script>
+    <script src="./js/carrito.js"></script>
+</body>
+</html>

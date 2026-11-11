@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar compra | TechStore</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">TECH<span>STORE</span></a>
+
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#productos">Productos</a>
+            <a href="carrito.html" class="nav-carrito">
+                Mi carrito <span id="contador-carrito">0</span>
+            </a>
+            <a href="arrepentimiento.html">Arrepentimiento</a>
+        </nav>
+    </header>
+
+    <main class="pagina-interior">
+        <section class="titulo-pagina">
+            <span class="etiqueta">ÚLTIMO PASO</span>
+            <h1>Finalizar compra</h1>
+            <p>Completá tus datos para preparar tu pedido.</p>
+        </section>
+
+        <section class="checkout-layout">
+
+            <form id="form-checkout" class="formulario-checkout">
+
+                <div class="formulario-bloque">
+                    <h2>01. Datos personales</h2>
+
+                    <div class="form-grupo">
+                        <label for="nombre-cliente">Nombre y apellido</label>
+                        <input type="text" id="nombre-cliente" required>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="email-cliente">Correo electrónico</label>
+                        <input type="email" id="email-cliente" required>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="telefono-cliente">Teléfono</label>
+                        <input type="tel" id="telefono-cliente" required>
+                    </div>
+                </div>
+
+                <div class="formulario-bloque">
+                    <h2>02. Dirección de envío</h2>
+
+                    <div class="form-grupo">
+                        <label for="direccion-cliente">Calle y número</label>
+                        <input type="text" id="direccion-cliente" required>
+                    </div>
+
+                    <div class="form-doble">
+                        <div class="form-grupo">
+                            <label for="ciudad-cliente">Ciudad</label>
+                            <input type="text" id="ciudad-cliente" required>
+                        </div>
+
+                        <div class="form-grupo">
+                            <label for="provincia-cliente">Provincia</label>
+                            <input type="text" id="provincia-cliente" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="codigo-postal">Código postal</label>
+                        <input type="text" id="codigo-postal" required>
+                    </div>
+                </div>
+
+                <div class="formulario-bloque">
+                    <h2>03. Método de pago</h2>
+
+                    <div class="form-grupo">
+                        <label for="metodo-pago">Seleccioná cómo querés pagar</label>
+                        <select id="metodo-pago" required>
+                            <option value="">Seleccionar método</option>
+                            <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                            <option value="Tarjeta de débito">Tarjeta de débito</option>
+                            <option value="Transferencia bancaria">Transferencia bancaria</option>
+                            <option value="Mercado Pago">Mercado Pago</option>
+                        </select>
+                    </div>
+
+                    <p class="aviso-demo">
+                        Esta es una demostración educativa. No se realizan cobros
+                        ni se solicitan números de tarjetas o códigos de seguridad.
+                    </p>
+                </div>
+
+                <button type="submit" class="btn-principal btn-ancho">
+                    Confirmar pedido
+                </button>
+
+                <a href="carrito.html" class="seguir-comprando">
+                    ← Volver al carrito
+                </a>
+
+                <p id="mensaje-checkout" class="mensaje-formulario"></p>
+            </form>
+
+            <aside class="resumen-compra checkout-resumen">
+                <h2>Tu pedido</h2>
+
+                <div id="resumen-productos"></div>
+
+                <div class="resumen-total">
+                    <span>Total</span>
+                    <strong id="checkout-total">$0</strong>
+                </div>
+            </aside>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="index.html" class="logo">TECH<span>STORE</span></a>
+        <p class="copyright">© 2026 TechStore. Proyecto educativo.</p>
+    </footer>
+
+    <script src="./js/productos.js"></script>
+    <script src="./js/checkout.js"></script>
+</body>
+</html>
